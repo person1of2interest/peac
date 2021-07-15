@@ -229,7 +229,8 @@ void processOneFrame(pcl::PointCloud<pcl::PointXYZ>& cloud, const std::string& o
 
 int process() {
 	const double unitScaleFactor = global::iniGet<double>("unitScaleFactor", 1.0f);
-	const std::string outputDir = global::iniGet<std::string>("outputDir", ".");
+	std::string outputDir = global::iniGet<std::string>("outputDir", ".");
+	outputDir=outputDir.substr(0,outputDir.size()-1);
 	{//create outputDir
 #ifdef _WIN32
 		std::string cmd="mkdir "+outputDir + " 2> NUL";
@@ -284,6 +285,7 @@ int process() {
 
 	std::vector<std::string> fnamelist;
 	std::string filelist = global::iniGet<std::string>("list","list.txt");
+	filelist=filelist.substr(0,filelist.size()-1);
 
 	if (filelist.find(".pcd") != std::string::npos) {
 		fnamelist.push_back(filelist); //support list=test.pcd to only input a single file
