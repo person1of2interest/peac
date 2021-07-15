@@ -229,7 +229,7 @@ void processOneFrame(pcl::PointCloud<pcl::PointXYZ>& cloud, const std::string& o
 
 int process() {
 	const double unitScaleFactor = global::iniGet<double>("unitScaleFactor", 1.0f);
-    std::string outputDir = global::iniGet<std::string>("outputDir", ".");
+	std::string outputDir = global::iniGet<std::string>("outputDir", ".");
 	outputDir=outputDir.substr(0,outputDir.size()-1);
 	{//create outputDir
 #ifdef _WIN32
